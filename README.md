@@ -1,6 +1,6 @@
 ## React Big Calendar with Bar Graph
 
-This project is a small demo app that combines **React Big Calendar** with a **bar graph** to visualize date-wise data.
+This project is a small demo app that combines **React Big Calendar** with a **bar graph** to visualize date-wise data, backed by a small **Redux Toolkit** store.
 
 - **Calendar views**: Day, week, and month.
 - **Highlighted dates**: Dates that have data are visually highlighted.
@@ -13,6 +13,7 @@ The app uses:
 - `react-big-calendar` for the calendar UI
 - `date-fns` for date handling
 - `recharts` for the bar chart
+- `@reduxjs/toolkit` + `react-redux` for global state (selected date + data source)
 - `vite` for fast development and builds
 
 ---
@@ -52,7 +53,15 @@ Vite will print a local URL such as `http://localhost:5173` – open that in you
 
 ---
 
-### 4. Dummy Data Structure
+### 4. State Management & Dummy Data
+
+- A Redux store (`src/store`) keeps:
+  - `data`: the calendar data coming from `src/data/dummyData.js`
+  - `selectedDate`: last date the user clicked
+- `CalendarWithBarGraph` subscribes to the store via `react-redux` hooks. Selecting slots/events dispatches an action to update `selectedDate`.
+- You can extend the slice with new reducers (e.g., filters, async loading) without touching the UI tree.
+
+**Dummy data format**
 
 Dummy data is defined in `src/data/dummyData.js`. It is keyed by **date string** in the format `DD-MM-YYYY`, with an array of objects representing user values for that date:
 
