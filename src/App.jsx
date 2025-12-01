@@ -6,10 +6,10 @@ const App = () => {
   return (
     <div className="app-root">
       <header className="app-header">
-        <h1>React Big Calendar with Bar Graph</h1>
+        <h1>Calendar Matrics Dashboard</h1>
         <p>
-          Select a date in the calendar to see date-wise data represented as a
-          bar graph.
+          Select a date in the calendar to see date-wise metrics represented as
+          a bar graph.
         </p>
       </header>
       <main className="app-main">
